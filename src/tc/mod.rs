@@ -27,6 +27,7 @@ pub use self::qdiscs::{
     TcFqCodelClStats, TcFqCodelClStatsBuffer, TcFqCodelQdStats,
     TcFqCodelQdStatsBuffer, TcFqCodelXstats, TcQdiscFqCodel,
     TcQdiscFqCodelOption, TcQdiscIngress, TcQdiscIngressOption,
+    TcQdiscClsactOption,
 };
 pub use self::stats::{
     TcStats, TcStats2, TcStatsBasic, TcStatsBasicBuffer, TcStatsBuffer,

@@ -10,6 +10,7 @@ use netlink_packet_utils::{
 use super::{
     TcFilterMatchAll, TcFilterMatchAllOption, TcFilterU32, TcFilterU32Option,
     TcQdiscFqCodel, TcQdiscFqCodelOption, TcQdiscIngress, TcQdiscIngressOption,
+    TcQdiscClsactOption
 };
 
 #[derive(Debug, PartialEq, Eq, Clone)]
@@ -18,6 +19,7 @@ pub enum TcOption {
     FqCodel(TcQdiscFqCodelOption),
     // Qdisc specific options
     Ingress(TcQdiscIngressOption),
+    Clsact(TcQdiscClsactOption),
     // Filter specific options
     U32(TcFilterU32Option),
     // matchall options
@@ -31,6 +33,7 @@ impl Nla for TcOption {
         match self {
             Self::FqCodel(u) => u.value_len(),
             Self::Ingress(u) => u.value_len(),
+            Self::Clsact(u) => u.value_len(),
             Self::U32(u) => u.value_len(),
             Self::MatchAll(m) => m.value_len(),
             Self::Other(o) => o.value_len(),
@@ -41,6 +44,7 @@ impl Nla for TcOption {
         match self {
             Self::FqCodel(u) => u.emit_value(buffer),
             Self::Ingress(u) => u.emit_value(buffer),
+            Self::Clsact(u) => u.emit_value(buffer),
             Self::U32(u) => u.emit_value(buffer),
             Self::MatchAll(m) => m.emit_value(buffer),
             Self::Other(o) => o.emit_value(buffer),
@@ -51,6 +55,7 @@ impl Nla for TcOption {
         match self {
             Self::FqCodel(u) => u.kind(),
             Self::Ingress(u) => u.kind(),
+            Self::Clsact(u) => u.kind(),
             Self::U32(u) => u.kind(),
             Self::MatchAll(m) => m.kind(),
             Self::Other(o) => o.kind(),

@@ -2,6 +2,7 @@
 
 mod fq_codel;
 mod ingress;
+mod clsact;
 
 pub use self::fq_codel::{
     TcFqCodelClStats, TcFqCodelClStatsBuffer, TcFqCodelQdStats,
@@ -9,3 +10,4 @@ pub use self::fq_codel::{
     TcQdiscFqCodelOption,
 };
 pub use self::ingress::{TcQdiscIngress, TcQdiscIngressOption};
+pub use self::clsact::{TcQdiscClsact, TcQdiscClsactOption};
